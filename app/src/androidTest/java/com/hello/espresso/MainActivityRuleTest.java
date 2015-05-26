@@ -4,6 +4,8 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;
 
+import com.squareup.spoon.Spoon;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Rule;
@@ -46,6 +48,7 @@ public class MainActivityRuleTest {
 
     @Test
     public void testValidLogin() {
+        Spoon.screenshot(loginActivity, "before_testValidLogin");
         String userName = "hellotech";
         String password = "hellotech";
         onView(withId(R.id.usernameEditText)).perform(typeText(userName), closeSoftKeyboard());
@@ -56,5 +59,7 @@ public class MainActivityRuleTest {
 
         onView(withId(R.id.textView)).check(matches(withText(welcomeMsg)));
 
+
+        Spoon.screenshot(loginActivity, "testValidLogin");
     }
 }

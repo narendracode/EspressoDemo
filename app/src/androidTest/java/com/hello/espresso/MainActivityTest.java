@@ -25,7 +25,7 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 
-
+import com.squareup.spoon.Spoon;
 
 public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
 
@@ -53,10 +53,12 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         assertNotNull(textView);
         assertNotNull(button);
         assertNotNull(editText);
+
     }
 
 
-    public void testChangeText_sameActivity() {
+    public void testChangeText() {
+
    // String text = "25";
         String text = "Hi, Good Morning";
     onView(withId(R.id.editText)).perform(typeText(text), closeSoftKeyboard());
@@ -68,6 +70,8 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
         //assertEquals(25, Integer.parseInt(testResult));
        // assertEquals(text, editText.getText().toString());
         assertTrue(text.equals(editText.getText().toString()));
+      //  assertFalse(text.equals(editText.getText().toString()));// this should fail
+
     }
 
     @Override
