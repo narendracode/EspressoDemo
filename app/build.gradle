@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'spoon'
+//apply plugin: 'de.felixschulze.gradle.spoon'
 
 android {
     compileSdkVersion 22
@@ -10,8 +12,10 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -22,6 +26,16 @@ android {
     packagingOptions {
         exclude 'LICENSE.txt'
     }
+
+    productFlavors {
+        free {
+
+        }
+        pro {
+
+        }
+    }
+
 }
 
 dependencies {
@@ -29,16 +43,25 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.2'
     androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
     compile files('libs/junit-4.12.jar')
-
     // Set this dependency to use JUnit 4 rules
     androidTestCompile 'com.android.support.test:rules:0.2'
     // Set this dependency to build and run Espresso tests
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.1'
     // Set this dependency to build and run UI Automator tests
     androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.0'
-
-
-
-    compile 'com.google.android.gms:play-services:7.3.0'
-   // compile 'com.android.support:appcompat-v7:22.1.1'
+    //compile 'com.google.android.gms:play-services:7.3.0'
+    // compile 'com.android.support:appcompat-v7:22.1.1'
+    // compile files('libs/spoon-runner-1.1.9-jar-with-dependencies.jar')
+    // compile files('libs/spoon-client-1.1.9.jar')
+    //androidTestCompile 'com.squareup.spoon:spoon-client:1.1.9'
+    //compile files('libs/gradle-spoon-plugin-1.1.2.jar')
+    //classpath 'de.felixschulze.gradle:gradle-spoon-plugin:1.1.2'
 }
+/*
+project.gradle.taskGraph.whenReady {
+    connectedAndroidTestDebug {
+        ignoreFailures = true
+    }
+}
+*/
+
